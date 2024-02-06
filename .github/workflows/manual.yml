@@ -19,6 +19,8 @@ on:
         type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  GITHUB_TOKEN: {{ secrets.GH_TOKEN }}
 jobs:
   # This workflow contains a single job called "greet"
   build:
@@ -42,7 +44,7 @@ jobs:
     steps:
       - uses: trstringer/manual-approval@v1
         with:
-          secret: ${{ github.TOKEN }}
+          secret: ${{ GITHUB_TOKEN }}
           approvers: pushpendrasingh3
           minimum-approvals: 1
           issue-title: "code Push to production from dev"
