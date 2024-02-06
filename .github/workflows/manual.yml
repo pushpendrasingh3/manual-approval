@@ -44,5 +44,12 @@ jobs:
         with:
           secret: ${{ github.TOKEN }}
           approvers: pushpendrasingh3
+          minimum-approvals: 1
+          issue-title: "code Push to production from dev"
+          issue-body: "Please approve/deny version:1.0.0"
+          exclude-workflow-initiater-as-approver: false
+          additional-approved-words: ''
+          additional-denied-words: ''
+          
       - name: Push to production
         run: echo deploying
