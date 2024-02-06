@@ -49,7 +49,7 @@ jobs:
           minimum-approvals: 1
           issue-title: "code Push to production from dev"
           issue-body: "Please approve/deny version:1.0.0"
-          exclude-workflow-initiater-as-approver: false
+          exclude-workflow-initiator-as-approver: false
           additional-approved-words: ''
           additional-denied-words: ''
           
