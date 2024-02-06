@@ -24,8 +24,8 @@ jobs:
       - name: Build
         run: |
           echo "building"
-          echo "GH_TOKEN = $(GHH_TOKEN)"
-          echo "ENV_LEVEL = $(ENV_LEVEL) "
+          echo "GH_TOKEN = ${GH_TOKEN}"
+          echo "ENV_LEVEL = ${ENV_LEVEL} "
   deploy:
     name: deploy
     runs-on: ubuntu-latest
