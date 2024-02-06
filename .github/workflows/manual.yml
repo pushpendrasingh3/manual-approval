@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: trstringer/manual-approval@v1
         with:
-          secret: ${{ GITHUB_TOKEN }}
+          secret: ${ GITHUB_TOKEN }
           approvers: pushpendrasingh3
           minimum-approvals: 1
           issue-title: "code Push to production from dev"
