@@ -14,6 +14,7 @@ on:
 env:
   environment: "Production"
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  ENV_LEVEL: ${{ vars.ENV_LEVEL }}
 jobs:
   # This workflow contains a single job called "greet"
   build:
@@ -21,7 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        run: echo building
+        run: |
+          echo "building"
+          echo "GH_TOKEN = $(GHH_TOKEN)"
+          echo "ENV_LEVEL = $(ENV_LEVEL) "
   deploy:
     name: deploy
     runs-on: ubuntu-latest
