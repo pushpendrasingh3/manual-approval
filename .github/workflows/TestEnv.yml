@@ -26,7 +26,7 @@ jobs:
           echo "building"
           echo "GH_TOKEN = ${GH_TOKEN} "
           echo "ENV_LEVEL = ${ENV_LEVEL} "
-          echc "GITHUB_ENV = ${GITHUB_ENV} "
+          echo "GITHUB_ENV = ${GITHUB_ENV} "
   deploy:
     name: deploy
     runs-on: ubuntu-latest
