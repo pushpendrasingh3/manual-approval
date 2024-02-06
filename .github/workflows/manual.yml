@@ -20,7 +20,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 env:
-  GITHUB_TOKEN: "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"
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 jobs:
   # This workflow contains a single job called "greet"
   build:
