@@ -37,11 +37,13 @@ jobs:
   release:
     name: production-push
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     needs: deploy
     steps:
       - uses: trstringer/manual-approval@v1
         with:
-          secret: ${ GH_TOKEN }
+          secret: ${{ secrets.GITHUB_TOKEN }}
           approvers: pushpendrasingh3
           minimum-approvals: 1
           issue-title: "code Push to production from dev"
