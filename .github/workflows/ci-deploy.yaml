@@ -10,9 +10,9 @@ env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_USER: ${{ secrets.DOCKER_USER }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  GIT_TAG: 1.2.0
+  GIT_TAG: 1.0.0
 jobs:
-  deploy:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,21 +25,30 @@ jobs:
         run: |
           echo "GIT_TAG=`cat version`" >> "$GITHUB_ENV"
           echo "$GITHUB_ENV"
+
+      # Build Docker image and push it to Docker Hub
+      - name: Build code and create image
+        run: |
+          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> "$GITHUB_ENV"      
+          docker build -t ${DOCKER_USER}/test-app:${GIT_TAG} -f argocd-config/Dockerfile .
+          #docker push ${DOCKER_USER}/test-app:${GIT_TAG}
+
+  deploy:        
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}  
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Build Docker image and push it to Docker Hub
-      - name: Build and push Docker image
+        # push image to Docker Hub
+      - name: Push image to Dockerhub Repository
         run: |
-          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> "$GITHUB_ENV"      
-          docker build -t ${DOCKER_USER}/my-app:${GIT_TAG} -f argocd-cicd-setup/Dockerfile .
-          docker push ${DOCKER_USER}/my-app:${GIT_TAG}
+          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> "$GITHUB_ENV"
+          #docker build -t ${DOCKER_USER}/test-app:${GIT_TAG} -f argocd-config/Dockerfile .
+          docker push ${DOCKER_USER}/test-app:${GIT_TAG}
       - name: Login to GitHub Packages
         uses: actions/checkout@v3
         with:
-          repository: pushpendrasingh3/argocd-setup
+          repository: pushpendrasingh3/manual-approval
           ref: 'main'
-          token: ${{ secrets.G_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
