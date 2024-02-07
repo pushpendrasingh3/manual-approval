@@ -8,8 +8,9 @@ on:
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_USER: ${{ secrets.DOCKER_USER }}
+  DOCKER_USER:     ${{ secrets.DOCKER_USER }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  GH_TOKEN:        ${{ secrets.GH_TOEKN }}  
   GIT_TAG: 1.0.0
 jobs:
   tag:
@@ -53,4 +54,4 @@ jobs:
         with:
           repository: pushpendrasingh3/manual-approval
           ref: 'main'
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${GH_TOKEN}      
