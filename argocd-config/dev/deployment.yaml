@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-custom-container
+  namespace: test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+        - name: my-container
+          imagePullPolicy: Always
+          image: pushpendras21/my-app:1.0.0
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-apache
+  namespace: test-app
+  labels:
+    app: apache
+spec:
+  type: LoadBalancer      
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: apache

@@ -1,2 +1,2 @@
-# manuall-approval
-Manual approval workflow
+# manual-approval
+argocd configuration 
