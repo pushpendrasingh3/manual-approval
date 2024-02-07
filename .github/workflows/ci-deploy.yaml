@@ -50,7 +50,7 @@ jobs:
           docker build -t ${DOCKER_USER}/test-app:${GIT_TAG} -f argocd-config/Dockerfile .
           docker push ${DOCKER_USER}/test-app:${GIT_TAG}
       - name: Login to GitHub Packages
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           repository: pushpendrasingh3/manual-approval
           ref: 'main'
