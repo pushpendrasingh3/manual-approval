@@ -20,7 +20,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Get latest tag
-        uses: actions
         run: |
           echo "GIT_TAG=`cat version`" >> "$GITHUB_ENV"
           echo "$GITHUB_ENV"
