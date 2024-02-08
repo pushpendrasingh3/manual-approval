@@ -13,45 +13,34 @@ env:
   GH_TOKEN:        ${{ secrets.GH_TOEKN }}  
   GIT_TAG: 1.0.0
 jobs:
-  tag:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       # Checkout the code from GitHub repository
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Get latest tag
         #id: latest-tag
         run: |
           echo "GIT_TAG=`cat version`" >> "$GITHUB_ENV"
           echo "$GITHUB_ENV"
-          echo "GIT_TAG = $GIT_TAG"
-
-
-  build:        
-    runs-on: ubuntu-latest
-    needs: tag
-    steps:
-           # Checkout the code from GitHub repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-  
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-        # push image to Docker Hub
-      - name: Push image to Dockerhub Repository
+      # Build Docker image and push it to Docker Hub
+      - name: Build and push Docker image
         run: |
           echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> "$GITHUB_ENV"
           docker build -t ${DOCKER_USER}/test-app:${GIT_TAG} -f argocd-config/Dockerfile .
           docker push ${DOCKER_USER}/test-app:${GIT_TAG}
       - name: Login to GitHub Packages
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: pushpendrasingh3/manual-approval
           ref: 'main'
-          token: ${GH_TOKEN}      
+          token: ${{ secrets.GH_TOKEN }}        
