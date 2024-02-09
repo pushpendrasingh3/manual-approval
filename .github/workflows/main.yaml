@@ -21,5 +21,13 @@ jobs:
         with:
           secret: ${{ secrets.GH_TOKEN }}
           approvers: pushpendras21,pushpendrasingh3
+   
       - name: Deploy to production
         run: echo deploying
+
+      - name: Login to GitHub Packages
+        uses: actions/checkout@v3
+        with:
+          repository: pushpendrasingh3/manual-approval
+          ref: 'main'
+          token: ${{ secrets.GH_TOKEN }}
