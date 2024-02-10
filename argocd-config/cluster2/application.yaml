@@ -11,7 +11,7 @@ spec:
   project: cluster2-my-app-project
   source:
     repoURL: https://github.com/pushpendrasingh3/manual-approval.git
-    targetRevision: HEAD
+    targetRevision: developer
     path: argocd-config/dev
     #path: environments/dev/my-app
   destination:

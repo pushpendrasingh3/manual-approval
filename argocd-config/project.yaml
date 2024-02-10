@@ -8,7 +8,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   # Project description
-  description: Learning CICD Project
+  description: Working with Project
 
   # Allow manifests to deploy from any Git repos
   sourceRepos:

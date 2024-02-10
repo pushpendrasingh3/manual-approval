@@ -11,7 +11,7 @@ spec:
   project: my-app-project
   source:
     repoURL: https://github.com/pushpendrasingh3/manual-approval.git
-    targetRevision: HEAD
+    targetRevision: developer
     path: argocd-config/dev
   destination:
     server: https://kubernetes.default.svc
