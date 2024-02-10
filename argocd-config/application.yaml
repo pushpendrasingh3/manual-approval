@@ -8,7 +8,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: my-app-project
+  project: my-test-app-project
   source:
     repoURL: https://github.com/pushpendrasingh3/manual-approval.git
     targetRevision: developer
