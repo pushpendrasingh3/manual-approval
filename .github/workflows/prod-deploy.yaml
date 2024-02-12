@@ -9,7 +9,7 @@ env:
   DOCKER_USER:     ${{ secrets.DOCKER_USER }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   GH_TOKEN:        ${{ secrets.GH_TOEKN }}  
-  GIT_TAG: 1.0.0
+  GIT_TAG: 1.1.2
 jobs:
   tag:
     runs-on: ubuntu-latest
