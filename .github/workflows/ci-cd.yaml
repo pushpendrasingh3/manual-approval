@@ -3,8 +3,8 @@ name: Deploy to Kubernetes
 on:
   push:
     branches: [developer]
-  pull_request:
-    branches: [developer]
+  #pull_request:
+    #branches: [developer]
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
