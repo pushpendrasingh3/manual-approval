@@ -1,7 +1,9 @@
 name: main
 on:
+  pull_request:
+    branches: [main]      
   workflow_dispatch:
-
+    branches: [main]  
 env:
   INPUT_SECRET: ${{ secrets.GH_TOKEN }}
 
