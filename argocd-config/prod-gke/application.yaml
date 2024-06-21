@@ -15,7 +15,7 @@ spec:
     path: argocd-config/prod
     #path: environments/prod/my-app
   destination:
-    server: https://34.100.254.32
+    server: https://35.244.55.196
     namespace: test-app
   syncPolicy:
     automated:

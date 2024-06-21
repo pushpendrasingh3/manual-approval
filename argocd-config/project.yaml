@@ -18,8 +18,10 @@ spec:
   # Destination clusters can be identified by 'server', 'name', or both.
   destinations:
   - namespace: test-app
-    server: https://kubernetes.default.svc
-    #name: cluster1
+    server: https://35.244.61.26
+
+  - namespace: test-app
+    server: https://35.244.55.196  
 
   # Deny all cluster-scoped resources from being created, except for Namespace
   clusterResourceWhitelist:

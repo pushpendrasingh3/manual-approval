@@ -14,7 +14,7 @@ spec:
     targetRevision: developer
     path: argocd-config/dev
   destination:
-    server: https://kubernetes.default.svc
+    server: https://35.244.61.26
     namespace: test-app
   syncPolicy:
     automated:
