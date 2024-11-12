@@ -2,20 +2,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-test-application
+  name: dev-manual-app
   namespace: argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: my-test-app-project
+  project: manual-approval-project
   source:
     repoURL: https://github.com/pushpendrasingh3/manual-approval.git
     targetRevision: developer
     path: argocd-config/dev
   destination:
-    server: https://kubernetes.default.svc
-    namespace: test-app
+    server: https://34.47.198.97
+    namespace: nonprod-app
   syncPolicy:
     automated:
       prune: true
