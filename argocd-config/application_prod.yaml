@@ -14,13 +14,8 @@ spec:
     targetRevision: developer
     path: argocd-config/prod
   destination:
-<<<<<<< HEAD:argocd-config/application_prod.yaml
-    server: https://34.47.151.239
+    server: https://35.200.132.244
     namespace: prod-app
-=======
-    server: https://35.244.55.196
-    namespace: test-app
->>>>>>> 5a8461077fa6d11438da3158e366cf07bb8039e4:argocd-config/prod-gke/application.yaml
   syncPolicy:
     automated:
       prune: true
