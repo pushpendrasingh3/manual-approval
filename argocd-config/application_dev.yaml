@@ -14,13 +14,8 @@ spec:
     targetRevision: developer
     path: argocd-config/dev
   destination:
-<<<<<<< HEAD:argocd-config/application_dev.yaml
-    server: https://34.47.198.97
+    server: https://34.47.237.100
     namespace: nonprod-app
-=======
-    server: https://35.244.61.26
-    namespace: test-app
->>>>>>> 5a8461077fa6d11438da3158e366cf07bb8039e4:argocd-config/application.yaml
   syncPolicy:
     automated:
       prune: true
